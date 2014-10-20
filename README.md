@@ -14,3 +14,12 @@ Lin Zhu oeshine@gmail.com
   * matplotlib 
   * eispice
   * Bottle
+# Introduction
+The battery simulator has a webpage GUI 
+
+ ![Dashboard](gallery/DashBoard.PNG "Dashboard")
+
+
+ 
+ 
+ 
