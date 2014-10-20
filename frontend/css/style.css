@@ -1,0 +1,36 @@
+
+body {
+  padding-top:50px; 
+}
+
+
+a:focus { 
+    outline: none; 
+}
+
+
+.target_highlight {
+  background-color:rgb(252, 248, 227);
+}
+
+
+div.log_item {
+  padding:5px;
+  margin: 5px;
+}
+div.log_notice {
+  border: 1px solid #aaaaaa;
+}
+div.log_success {
+  border: 1px solid green;
+}
+div.log_warning {
+  border: 1px solid orange;  
+}
+div.log_error {
+  border: 1px solid red;
+}
+
+button.active-strong {
+  border: 1px solid #aaaaaa;
+}

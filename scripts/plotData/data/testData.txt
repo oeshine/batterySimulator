@@ -1,0 +1,15 @@
+discharge with balnce resistor 240R:
+current:0.697511143976,  quantity loss:0.697511143976
+ 
+discharge without balance resistor:
+current:0.682391798835,  quantity loss:0.682391798835
+
+
+charge with balance resistor 240R:
+current:2.66503621641,  quantity Gain:2.66503621641
+
+charge without balance resistor:
+current:2.65,  quantity Gain:2.65
+
+balance with 240R:
+current:0.0152073511919,quantity loss:0.0152073511919

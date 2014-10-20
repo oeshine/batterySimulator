@@ -1,0 +1,106 @@
+total voltage is: 342.215
+total current is: 0.323
+read cell flags status is: 1
+the flags are:
+[[0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [1 0 0]
+ [0 0 0]]
+read cell voltage status is: 1
+the voltages are:
+[[ 3.616  3.618  3.616  3.616  3.592  3.618  3.606  3.616  3.609  3.618
+   3.616  3.611]
+ [ 3.619  3.621  3.621  3.621  3.615  3.594  3.606  3.552  3.599  3.618
+   3.615  3.615]
+ [ 3.618  3.618  3.618  3.609  3.612  3.615  3.606  3.615  3.616  3.615
+   3.616  3.614]
+ [ 3.592  3.618  3.618  3.616  3.616  3.618  3.616  3.614  3.616  3.611
+   3.616  3.616]
+ [ 3.621  3.619  3.618  3.618  3.616  3.616  3.619  3.621  3.6    3.618
+   3.611  3.614]
+ [ 3.615  3.608  3.616  3.615  3.615  3.615  3.615  3.616  3.614  3.614
+   3.615  3.609]
+ [ 0.018  3.616  3.616  3.618  3.615  3.615  3.616  3.609  3.616  3.609
+   3.615  3.546]
+ [ 3.621  3.611  3.614  3.619  3.619  3.612  3.619  3.614  3.614  3.612
+   3.618  3.618]]
+the max voltage index is: [1, 1, 0, 1, 0, 2, 3, 0]
+read cell temperature status is: 1
+the temperatures are:
+[[ 26.558  36.037]
+ [ 26.558  33.975]
+ [ 26.558  31.913]
+ [ 26.471  26.475]
+ [ 25.991  28.35 ]
+ [ 26.909  31.35 ]
+ [ 25.297  25.725]
+ [ 26.515  29.1  ]]
+relay status is: 0
+low voltage warning
+balance start time is: 0
+balance start time is: 0
+balance start time is: 0
+balance start time is: 0
+balance start time is: 0
+balance start time is: 0
+balance start time is: 0
+balance start time is: 0
+Port closed!
+
+total voltage is: 349.248
+total current is: 0.323
+read cell flags status is: 1
+the flags are:
+[[0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [1 0 0]
+ [0 0 0]]
+read cell voltage status is: 1
+the voltages are:
+[[ 3.616  3.616  3.616  3.615  3.592  3.618  3.608  3.615  3.609
+   3.616  3.612]
+ [ 3.619  3.621  3.622  3.621  3.615  3.594  3.606  3.553  3.599
+   3.615  3.615]
+ [ 3.618  3.616  3.618  3.609  3.611  3.615  3.606  3.616  3.615
+   3.615  3.614]
+ [ 3.594  3.618  3.618  3.615  3.616  3.618  3.618  3.614  3.616
+   3.616  3.616]
+ [ 3.619  3.621  3.618  3.618  3.616  3.616  3.619  3.621  3.6
+   3.611  3.614]
+ [ 3.615  3.608  3.616  3.615  3.615  3.615  3.615  3.618  3.614
+   3.616  3.609]
+ [ 0.02   3.616  3.616  3.618  3.615  3.615  3.616  3.609  3.616
+   3.615  3.547]
+ [ 3.621  3.611  3.615  3.619  3.621  3.612  3.619  3.614  3.614
+   3.618  3.618]]
+the max voltage index is: [5, 2, 0, 1, 1, 7, 3, 0]
+read cell temperature status is: 1
+the temperatures are:
+[[ 26.558  33.412]
+ [ 26.515  33.412]
+ [ 26.646  31.538]
+ [ 26.427  25.35 ]
+ [ 26.035  28.163]
+ [ 26.953  30.975]
+ [ 25.341  25.35 ]
+ [ 26.515  28.538]]
+relay status is: 0
+low voltage warning
+balance start time is: 597
+balance start time is: 597
+balance start time is: 597
+balance start time is: 597
+balance start time is: 597
+balance start time is: 597
+balance start time is: 597
+balance start time is: 597
+Port closed!
+ 

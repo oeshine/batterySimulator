@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+	
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<title>BatterySimulator</title> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css"> 
+<link rel="stylesheet" href="/css/jquery.toastmessage.css" type="text/css">	
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<script src="/js/jquery-1.7.2.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.toastmessage.js"></script>
+<script src="/js/settings.js"></script>
+<script src="/js/app_commandwriter.js"></script>
+<script src="/js/app_commandreader.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/app_simulatejobs.js"></script>
+<!--script src="/js/dygraph-combined.js"></script -->
+<script src="/js/app_import.js"></script>
+<script src="/js/highcharts.js"></script>
+<script src="/js/highcharts-more.js"></script>
+<script src="/js/exporting.js"></script>
+<script src="/js/app_iv_meters.js"></script>
+<script src="/js/app_bar_charts.js"></script>
+</head>
+<body>
+
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</a>
+				<div class="btn-group pull-right">
+					<button id="connect_btn" class="btn btn-warning" type="submit">Disconnected</button>
+				</div>
+				<div class="btn-group pull-right">
+					<button id="cancel_btn" class="btn" type="submit" title="stop the simulator"><i class="icon-stop"></i></button>
+				</div>		
+				<button id="pause_btn" class="btn pull-right" type="submit" title="pause/continue"><i class="icon-pause"></i></button>
+				<a class="brand" href="#" style="color:#666666"><img src="/img/Battery-Icon-brand.png" style="margin-right:6px">TTP&SSF BatterySimulator</a>
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="AboutBatterySimulator">About TTP&SSF BatterySimulator</a>
+								<li><a href="AboutAuthor">About the author</a>
+							</ul>
+						</li> 
+						<li class="divider-vertical"></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Manual<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="ManualTOC">Manual TOC</a>
+								<li><a href="OperatingManual">Operating Manual</a>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a id="reset_simulator" href="reset">Reset simulator</a>
+							</ul>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<div class="tabbable row">
+					
+					<!--tabbar start-->
+					<div class="span2 tabs-left">
+						<ul class="nav nav-tabs" style="width:100%">	
+							<li class="active"><a href="#tab_graph" id="tab_graph_button" data-toggle="tab"><i class="icon-picture" style="margin-right:2px"></i> Dashboard</a></li>
+							<!--li><a href="#tab_curves" id="tab_curves_button" data-toggle="tab"><i class="icon-picture" style="margin-right:2px"></i> Curves</a></li -->
+							<li><a href="#tab_jobs" id="tab_jobs_button" data-toggle="tab"><i class="icon-th-list" style="margin-right:2px"></i> Simulation Jobs</a></li>
+							<li><a href="#tab_logs" id="tab_logs_button" data-toggle="tab"><i class="icon-exclamation-sign" style="margin-right:2px"></i> Logs</a></li>							
+						</ul>
+					</div>
+					<!--tabbar end-->
+					<div class="span10">	
+						<div class="tab-content" style="overflow:visible">				
+							<!--content start-->
+							<div id="tab_graph" class="tab-pane active">
+								<div  style="min-width:410px">
+									<div id="IVcontainer" style="min-width: 400px;  margin: -1 auto"></div>
+									<div id="bar_select_btns" class="btn-group pull-left" data-toggle="buttons-radio">
+										<button id="bar_select_voltage_btn" class="btn active">Voltage</button>
+										<button id="bar_select_quantity_btn" class="btn">Quantity</button>
+										<button id="bar_select_soc_btn" class="btn">SOC</button>
+										<button id="bar_select_cycles_btn" class="btn">Cycles</button>
+									</div>
+									<div id="BarChartcontainer" style="min-width: 400px; height: 2048px; margin: -1 auto"></div>
+								</div>
+							</div>
+							<div id="tab_jobs" class="tab-pane">
+									<div class="row" style="margin-left:0px">										
+
+									</div>
+								<form id="command_widget" class="well pull-left">
+
+									
+									<label>Name</label>
+									<input type="text" id="command_list_name" style="width:296px" placeholder="Name list…">
+									<label>Command List <span id="previe_stats" style="color:#888888; margin-left:10px"></span></label>
+									<textarea id="command_program" style="width:296px;  height:300px"></textarea>
+									<div style="padding-top:20px">
+								    <div class="btn-group pull-left">
+									    <button id="command_list_submit" class="btn btn-large">Send to Simulator</button>
+									    <!--button id="gcode_bbox_submit" class="btn btn-large" title="send bounding box to lasersaur" data-delay="500">
+										    <span class="icon-resize-full"></span>
+									    </button-->
+								    </div>
+								    <button id="command_list_save_to_queue" class="btn btn-large pull-right" title="save to queue" data-delay="500">
+											<span class="icon-plus-sign"></span>
+								    </button>
+									</div>
+							    <div id="progressbar" class="progress progress-striped" style="margin-top:70px; clear:both">
+								    <div class="bar" style="width:0%;"></div>
+							    </div>
+								</form>
+								<img src="/img/big-arrow.png" class="pull-left" style="margin:40px 0px 110px 30px;"/>
+
+
+								<div class="pull-left span3">	
+
+										
+									<ul id="command_list_queue" class="nav nav-tabs nav-stacked"></ul>
+									<div class="btn-group">
+										<a class="btn btn-large dropdown-toggle" data-toggle="dropdown" href="#">
+										Load from Library
+										<span class="caret"></span>
+										</a>
+										<ul id="command_list_library" class="dropdown-menu"></ul>
+											<!-- stock library go here -->
+										</ul>
+										
+										<div class="pull-left">
+											<form id="svg_upload_form" action="#" onsubmit="return false;">
+												<input type="file" id="svg_upload_file" name="data" style="visibility:hidden; position:fixed">
+												<input type="text" id="svg_upload_file_temp" style="display:none">			
+											</form>
+										</div>
+
+									</div>
+									<div id="dpi_import_info" class="pull-left" style="margin:10px">Support Python script only: <b>.py</b></div>
+									<div class="btn-group pull-left">
+											<button id="svg_import_btn" class="btn btn-large" data-loading-text="loading..." autocomplete="off">
+												<i class="icon-folder-open"></i> Import locally
+											</button>
+										<!--button class="btn btn-large dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+										<.ul class="dropdown-menu">
+											<li><a id="svg_import_72_btn" href="#">Import 72dpi SVG</a></li>
+											<li><a id="svg_import_90_btn" href="#">Import 90dpi SVG</a></li>
+											<li><a id="svg_import_96_btn" href="#">Import 96dpi SVG</a></li>
+												<li class="divider"></li>
+											<li><a id="svg_import_nop_btn" href="#">Import without Optimizing</a></li>
+										</ul-->
+									</div>
+									
+								</div>								
+							</div>
+							<div id="tab_logs" class="tab-pane active">
+							    <div class="alert" style="margin:5px; display:none">
+								    <a class="close" data-dismiss="alert">×</a>
+								    Log, most recent messages first:
+							    </div>								
+								<div id="log_content" style="clear:both; overflow:auto; display:none">
+									<!-- log -->
+								</div>
+							</div> <!-- end of log tab -->
+
+							<!--content end-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
+
